@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- jquery css -->
+    <link rel="stylesheet" href="node_modules/jquery-ui-dist/jquery-ui.css" />
+    <link rel="stylesheet" href="node_modules/jq.schedule/dist/css/style.css" />
+    <!-- Bootstrap 5.2 CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <!-- google noto TC font -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="css/bs_custom.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>時間軸</title>
+  </head>
+  <body>
+    <div class="container-fluid p-0">
+      <!-- sidebar -->
+      <div class="sidebar bg-grey1 p-3">
+        <div class="d-flex flex-column h-100">
+          <div class="side-ic text-center ic-secondary-color">
+            <img src="./img/Icon_TimeLine.svg" class="mx-auto mb-1" />
+            <a href="#" class="stretched-link">時間軸</a>
+          </div>
+          <div class="side-ic text-center ic-white-color">
+            <img src="./img/Icon_BusinessSetting.svg" class="mx-auto mb-1" />
+            <a href="#" class="stretched-link">營業設定</a>
+          </div>
+          <div class="side-ic text-center ic-white-color">
+            <img src="./img/Icon_ReservationSetting.svg" class="mx-auto mb-1" />
+            <a href="#" class="stretched-link">訂位設定</a>
+          </div>
+          <div class="side-ic text-center ic-white-color">
+            <img src="./img/Icon_AccountManagement.svg" class="mx-auto mb-1" />
+            <a href="#" class="stretched-link">帳號設定</a>
+          </div>
+          <div class="side-ic text-center ic-white-color">
+            <img src="./img/Icon_CustomerService.svg" class="mx-auto mb-1" />
+            <a href="#" class="stretched-link">客服資訊</a>
+          </div>
+          <div class="side-ic text-center ic-white-color">
+            <img src="./img/Icon_AdministratorSetting.svg" class="mx-auto mb-1" />
+            <a href="#" class="stretched-link">系統管理員設定</a>
+          </div>
+          <div class="side-ic text-center ic-white-color mt-auto mb-1">
+            <img src="./img/Icon_Logout.svg" class="mx-auto" />
+            <a href="#" class="stretched-link">登出</a>
+          </div>
+        </div>
+      </div>
+      <!-- /#sidebar -->
+      <!-- content-wrapper -->
+      <div class="content-wrapper">
+        <!-- date/function control -->
+        <div class="date-func-control d-flex color-grey1 p-2">
+          <input
+            type="date"
+            class="form-control no-border tx-rem15 w-200px me-auto"
+            value="2011-09-29"
+          />
+          <button type="button" class="btn btn-outline-secondary me-1 color-grey1">當日列表</button>
+          <button type="button" class="btn btn-outline-secondary me-1 color-grey1">客戶資訊</button>
+          <button type="button" class="btn btn-outline-secondary me-1 bg-waring">座位衝突</button>
+          <button type="button" class="btn btn-outline-secondary me-1 color-main">新增訂位</button>
+        </div>
+        <!-- /#date/function control -->
+        <!-- modify-control -->
+        <div class="modify-control d-flex bg-grey4 p-2">
+          <select class="form-select no-border bg-grey4 w-auto tx-rem11 me-auto">
+            <option value="2" selected>中央區</option>
+            <option value="3">戶外區</option>
+          </select>
+          <button type="button" class="btn no-border bg-none me-2">
+            <i class="fas fa-save fa-lg" aria-hidden="true"></i>
+          </button>
+          <button id="event_setDraggable" type="button" class="btn no-border bg-none me-1">
+            <i class="fas fa-edit fa-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn no-border bg-none me-1">
+            <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+          </button>
+
+          <button id="event_resetData" class="btn btn-danger" style="margin-bottom: 12px">
+            resetData()
+          </button>
+        </div>
+        <!-- /#modify-control -->
+        <!-- content-body -->
+        <div class="content-body">
+          <div class="container-fluid h-100">
+            <div id="schedule"></div>
+          </div>
+        </div>
+        <!-- /#content-body -->
+      </div>
+      <!-- /#content-wrapper -->
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap 5.2 JS -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/jquery-ui-dist/jquery-ui.js"></script>
+    <script src="node_modules/jq.schedule/dist/js/jq.schedule.js"></script>
+    <script src="node_modules/jquery-ui-touch-punch-master/jquery.ui.touch-punch.js"></script>
+    <script src="node_modules/@popperjs/core/dist/umd/popper.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--  -->
+    <script>
+      $('.sc_bar').draggable();
+    </script>
+
+    <!-- jq.schedule.plus -->
+    <script type="text/javascript">
+      $(function () {
+        var isDraggable = true;
+        var $sc = $('#schedule').timeSchedule({
+          startTime: '00:00', // schedule start time(HH:ii)
+          endTime: '24:00', // schedule end time(HH:ii)
+          widthTime: 60 * 30, // cell timestamp example 30 minutes
+          timeLineY: 60, // height(px)
+          verticalScrollbar: 20, // scrollbar (px)
+          timeLineBorder: 2, // border(top and bottom)
+          bundleMoveWidth: 6, // width to move all schedules to the right of the clicked time line cell
+          draggable: false,
+          resizable: false,
+          widthTimeX: 80, //1cell width(px)
+          rows: {
+            0: {
+              title: 'Title Area1',
+              schedule: [
+                {
+                  start: '11:00',
+                  end: '14:00',
+                  text: 'Text Area',
+                  data: {},
+                },
+              ],
+            },
+            1: {
+              title: 'Title Area2',
+              schedule: [
+                {
+                  start: '16:00',
+                  end: '17:00',
+                  text: 'Text Area',
+                  data: {},
+                },
+              ],
+            },
+            2: {
+              title: 'Title Area2',
+              schedule: [
+                {
+                  start: '16:00',
+                  end: '17:00',
+                  text: 'Text Area',
+                  data: {},
+                },
+              ],
+            },
+            3: {
+              title: 'Title Area2',
+              schedule: [
+                {
+                  start: '16:00',
+                  end: '17:00',
+                  text: 'Text Area',
+                  data: {},
+                },
+              ],
+            },
+          },
+          onAppendSchedule: function (node, data) {
+            if (data.data.class) {
+              node.addClass(data.data.class);
+            }
+          },
+          onScheduleClick: function (node, time, timeline) {
+            var start = time;
+            var end = $(this).timeSchedule(
+              'formatTime',
+              $(this).timeSchedule('calcStringTime', time) + 3600 //預設新增時間
+            );
+            $(this).timeSchedule('addSchedule', timeline, {
+              start: start,
+              end: end,
+              text: '4大2小 李小姐',
+              data: {
+                class: 'sc_bar_insert',
+              },
+            });
+          },
+        });
+        $('#event_resetData').on('click', function () {
+          $sc.timeSchedule('resetData');
+        });
+        $('#event_setDraggable').on('click', function () {
+          isDraggable = !isDraggable;
+          $sc.timeSchedule('setDraggable', isDraggable);
+        });
+        $('#clear-logs').on('click', function () {
+          $('#logs .table').empty();
+        });
+      });
+    </script>
+  </body>
+</html>

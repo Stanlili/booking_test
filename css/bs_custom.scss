@@ -1,0 +1,59 @@
+@import '_custom_color.scss';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+.form-control,
+.form-select {
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #ced4da !important;
+}
+
+.input-group-text {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.col-form-label{
+  color: $grey2 !important;
+}
+
+.form-check-input[type='radio']:checked {
+  background-color: $black !important;
+  border-color: $black !important;
+}
+
+.btn-primary {
+  @include button-variant($main_color, darken($main_color, 7.5%), darken($main_color, 10%), lighten($main_color,5%), lighten($main_color, 10%), darken($main_color,30%));
+}
+
+.btn-outline-primary {
+  @include button-outline-variant($main_color, #fff, lighten($main_color,5%), $main_color,#fff);
+}
+
+.btn-outline-secondary {
+  @include button-outline-variant($grey3, #222222, lighten($grey3,5%), $grey3);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: $white !important;
+  background-color: $main_color !important;
+}
+
+.nav-link {
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: $white;
+}
+
+.nav-item{
+  text-align: center !important;
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: $main_color !important;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0px !important;
+}
