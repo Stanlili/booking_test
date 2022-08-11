@@ -378,7 +378,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         var st = Math.ceil((data.startTime - saveData.tableStartTime) / setting.widthTime);
         var et = Math.floor((data.endTime - saveData.tableStartTime) / setting.widthTime);
-        var $bar = $('<div class="sc_bar"><span class="head"><span class="time"></span></span><span class="text"></span></div>');
+        var $bar = $('<div class="sc_bar"><span class="head"><span class="time"></span></span><span class="text"></span><span class="status">[併-table-3]</span></div>');
         var stext = methods.formatTime(data.startTime);
         var etext = methods.formatTime(data.endTime);
 
@@ -957,8 +957,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           tableEndTime: tableEndTime
         }]);
 
-        var htmlPeople = '' + '<div class="sc_menu">' + '\n' + '<div class="sc_header_cell"><span>&nbsp;</span></div>' + '\n' + '<div class="sc_header">' + '\n' + '<div class="sc_headerPeople_scroll"></div>' + '\n' + '</div>' + '\n' + '</div>';//Stanli 增加人數統計row 22/08/08
-        var html = '' + '<div class="sc_menu">' + '\n' + '<div class="sc_header_cell"><span>&nbsp;</span></div>' + '\n' + '<div class="sc_header">' + '\n' + '<div class="sc_header_scroll"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n'+ htmlPeople + '<div class="sc_wrapper">' + '\n' + '<div class="sc_data">' + '\n' + '<div class="sc_data_scroll"></div>' + '\n' + '</div>' + '\n' + '<div class="sc_main_box">' + '\n' + '<div class="sc_main_scroll">' + '\n' + '<div class="sc_main"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n' + '</div>';
+        var htmlPeople = '' + '<div class="sc_menu">' + '\n' + '<div class="sc_header_cell"><span class="pl-10px">已排位數</span></div>' + '\n' + '<div class="sc_header">' + '\n' + '<div class="sc_headerPeople_scroll"></div>' + '\n' + '</div>' + '\n' + '</div>';//Stanli 增加人數統計row 22/08/08
+        var html = '' + '<div class="sc_menu">' + '\n' + '<div class="sc_header_cell"><span class="pl-10px">時段</span></div>' + '\n' + '<div class="sc_header">' + '\n' + '<div class="sc_header_scroll"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n'+ htmlPeople + '<div class="sc_wrapper">' + '\n' + '<div class="sc_data">' + '\n' + '<div class="sc_data_scroll"></div>' + '\n' + '</div>' + '\n' + '<div class="sc_main_box">' + '\n' + '<div class="sc_main_scroll">' + '\n' + '<div class="sc_main"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n' + '</div>';
         $this.append(html);
         $this.addClass(config.className);
         $this.find('.sc_main_box').on('scroll', function () {
