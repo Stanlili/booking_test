@@ -241,6 +241,11 @@ body {
   width: 200px;
 }
 
+/*padding*/
+.pl-10px {
+  padding-left: 10px !important;
+}
+
 /*#*/
 .store-name,
 .shop-name {
@@ -302,6 +307,72 @@ body {
 
 .modify-control {
   height: 48px;
+}
+
+/* jq.schedule */
+.jq-schedule .sc_menu .sc_header_cell, .jq-schedule .sc_data {
+  color: #666;
+}
+
+.jq-schedule .sc_menu .sc_header_cell, .jq-schedule .sc_data {
+  background: #fff;
+}
+
+.jq-schedule .sc_menu .sc_header .sc_time {
+  border-left: solid 1px #ccc;
+  background: #fff;
+  border-bottom: solid 1px #ccc;
+}
+
+.jq-schedule .sc_menu .sc_header_cell, .jq-schedule .sc_header .sc_time, .jq-schedule .sc_main_scroll .sc_time {
+  color: #666;
+}
+
+.sc_data {
+  border-right: 1px #ccc solid;
+}
+
+.jq-schedule .sc_main_scroll .sc_main .tl:hover {
+  background: #fff;
+}
+
+.sc_header_cell {
+  border-bottom: 1px #ccc solid;
+}
+
+.jq-schedule .sc_bar {
+  background: #FFBC6C;
+  color: #1a1a1a;
+}
+
+.jq-schedule .sc_bar .ui-resizable-handle {
+  background: inherit;
+}
+
+.jq-schedule .sc_bar .head,
+.jq-schedule .sc_bar .text {
+  margin-top: 2px;
+}
+
+.jq-schedule .sc_bar .status {
+  display: block;
+  margin-top: 2px;
+  font-weight: bold;
+  padding: 0 14px;
+  height: 1.2em;
+  overflow: hidden;
+}
+
+.bar-combine-color {
+  background: #BAD5F6;
+}
+
+.bar-confirm-color {
+  background: #91E4DF;
+}
+
+.bar-waiting-color {
+  background: #666666;
 }
 
 /* collapse icon change */
