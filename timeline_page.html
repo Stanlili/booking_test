@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta Permissions-Policy: interest-cohort="()" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- jquery css -->
-    <link rel="stylesheet" href="https://releases.jquery.com/git/ui/jquery-ui-git.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="node_modules/jquery-ui-dist/jquery-ui.css" />
+    <link rel="stylesheet" href="node_modules/jq.schedule/dist/css/style.css" />
     <!-- Bootstrap 5.2 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
@@ -97,7 +97,7 @@
         <!-- /#modify-control -->
         <!-- content-body -->
         <div class="content-body">
-          <div class="container-fluid h-100">
+          <div class="container-fluid h-100 pt-2">
             <div id="schedule"></div>
           </div>
         </div>
@@ -107,32 +107,25 @@
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap 5.2 JS -->
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-   <script
-  src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
-  integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
-  crossorigin="anonymous"></script>
-    
-    <script src="css/jq.schedule.js"></script>
-    <script src="css/jquery.ui.touch-punch.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/jquery-ui-dist/jquery-ui.js"></script>
+    <script src="node_modules/jq.schedule/dist/js/jq.schedule.js"></script>
+    <script src="node_modules/jquery-ui-touch-punch-master/jquery.ui.touch-punch.js"></script>
+    <script src="node_modules/@popperjs/core/dist/umd/popper.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!--  -->
     <script>
       $('.sc_bar').draggable();
     </script>
 
-    <!-- jq.schedule.plus -->
+    <!-- jq.schedule https://github.com/ateliee/jquery.schedule-->
     <script type="text/javascript">
       $(function () {
         var isDraggable = true;
         var $sc = $('#schedule').timeSchedule({
-          startTime: '00:00', // schedule start time(HH:ii)
-          endTime: '24:00', // schedule end time(HH:ii)
+          startTime: '21:00', // schedule start time(HH:ii)
+          endTime: '27:00', // schedule end time(HH:ii)
           widthTime: 60 * 30, // cell timestamp example 30 minutes
           timeLineY: 60, // height(px)
           verticalScrollbar: 20, // scrollbar (px)
@@ -143,48 +136,46 @@
           widthTimeX: 80, //1cell width(px)
           rows: {
             0: {
-              title: 'Title Area1',
-              schedule: [
-                {
-                  start: '11:00',
-                  end: '14:00',
-                  text: 'Text Area',
-                  data: {},
-                },
-              ],
+              title: '未安排區',
             },
             1: {
-              title: 'Title Area2',
-              schedule: [
-                {
-                  start: '16:00',
-                  end: '17:00',
-                  text: 'Text Area',
-                  data: {},
-                },
-              ],
+              title: '未安排區',
             },
             2: {
-              title: 'Title Area2',
+              title:
+                'Table1<br/><i class="fa-solid fa-chair me-1"></i><p class="me-2 d-inline">2</p><i class="fa-solid fa-object-group me-1"></i><i class="fa-solid fa-v"></i>',
               schedule: [
                 {
-                  start: '16:00',
-                  end: '17:00',
-                  text: 'Text Area',
+                  start: '22:00',
+                  end: '23:00',
+                  text: '99大99小 王先生',
                   data: {},
                 },
               ],
             },
             3: {
-              title: 'Title Area2',
+              title:
+                'Table2<br/><i class="fa-solid fa-chair me-1"></i><p class="me-2 d-inline">2</p><i class="fa-solid fa-object-group me-1"></i><i class="fa-solid fa-v"></i>',
               schedule: [
                 {
-                  start: '16:00',
-                  end: '17:00',
-                  text: 'Text Area',
+                  start: '23:00',
+                  end: '24:00',
+                  text: '99大99小 王先生',
                   data: {},
                 },
               ],
+            },
+            4: {
+              title:
+                'Table3<br/><i class="fa-solid fa-chair me-1"></i><p class="me-2 d-inline">2</p><i class="fa-solid fa-object-group me-1"></i><i class="fa-solid fa-v"></i>',
+            },
+            5: {
+              title:
+                'Table4<br/><i class="fa-solid fa-chair me-1"></i><p class="me-2 d-inline">2</p><i class="fa-solid fa-object-group me-1"></i><i class="fa-solid fa-v"></i>',
+            },
+            6: {
+              title:
+                'Table5<br/><i class="fa-solid fa-chair me-1"></i><p class="me-2 d-inline">2</p><i class="fa-solid fa-object-group me-1"></i><i class="fa-solid fa-v"></i>',
             },
           },
           onAppendSchedule: function (node, data) {
@@ -196,7 +187,7 @@
             var start = time;
             var end = $(this).timeSchedule(
               'formatTime',
-              $(this).timeSchedule('calcStringTime', time) + 3600 //預設新增時間
+              $(this).timeSchedule('calcStringTime', time) + 3600 //新增組數的預設時間長度1hr
             );
             $(this).timeSchedule('addSchedule', timeline, {
               start: start,
