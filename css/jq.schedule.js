@@ -378,7 +378,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         var st = Math.ceil((data.startTime - saveData.tableStartTime) / setting.widthTime);
         var et = Math.floor((data.endTime - saveData.tableStartTime) / setting.widthTime);
-        var $bar = $('<div class="sc_bar"><span class="head"><span class="time"></span></span><span class="text"></span><span class="status">[併-table-3]</span></div>');
+        var $bar = $('<div class="sc_bar"><span class="head"><span class="time"></span></span><span class="text"></span></div>');
         var stext = methods.formatTime(data.startTime);
         var etext = methods.formatTime(data.endTime);
 
@@ -984,7 +984,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
 
         //Stanli 增加人數統計row 22/08/08
-        // t=36000, t<79200 ,t+=1800
         for (var t = tableStartTime; t < tableEndTime; t += config.widthTime) {
            {
             htmlPeople = '';
@@ -995,13 +994,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             $timePeople.width(config.widthTimeX);
             $this.find('.sc_headerPeople_scroll').append($timePeople);
             beforeTime = t;
-            console.log(t);
           }
         }
-        //cn=3600秒
-        //cellNum=2格
-        //config.widthTimeX=一格60px
-        //config.widthTime=1800
 
         $(window).on('resize', function () {
           methods._resizeWindow.apply($this);
